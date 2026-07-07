@@ -1,146 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body{
-    background:url("cal.jpg") no-repeat center center fixed;
-    background-size:cover;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calc215 - Welcome</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
     font-family:Arial, Helvetica, sans-serif;
 }
 
-.card-box{
-    width:500px;
-    margin:80px auto;
-    background:url("oip1.jpg") no-repeat center center fixed;
-    padding:35px;
-    border-radius:15px;
-    box-shadow:0 0 20px rgba(0,0,0,.3);
-    text-align:center;
-    text-emphasis-color: white;
-    border: 5px solid black;
-
-}
-
-h1,h2,h3{
-    text-align:center;
-    font-weight:bold;
-    color:black;
-}
-.screen{
-    width:100%;
-    height:60px;
-    background:white;
-    border:4px solid black;
-    border-radius:10px;
-    margin-bottom:20px;
-    text-align:right;
-    font-size:30px;
-    line-height:60px;
-    padding-right:15px;
-    box-sizing:border-box;
-    overflow:hidden;
-}
-label{
-    font-weight:bold;
-    margin-bottom:8px;
-}
-.button-container{
+body{
     display:flex;
-    flex-wrap:wrap;
-    justify-content:space-between;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    background:linear-gradient(135deg,#1d2b64,#3a1c71,#6a11cb);
+    transition:0.5s;
 }
-input{
+
+.card{
+    width:380px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(10px);
+    border-radius:20px;
+    padding:30px;
     text-align:center;
+    color:white;
+    box-shadow:0 10px 25px rgba(0,0,0,.3);
 }
-table{
-    width:100%;
+
+.logo{
+    font-size:60px;
+}
+
+h1{
+    margin-top:10px;
+    font-size:40px;
+}
+
+p{
+    margin:10px 0;
+    color:#f1f1f1;
+}
+
+#time{
+    font-size:28px;
+    font-weight:bold;
     margin-top:20px;
 }
+
+#date{
+    margin-bottom:20px;
+    color:#eee;
+}
+
+label{
+    display:block;
+    margin-top:15px;
+    margin-bottom:8px;
+    text-align:left;
+    font-weight:bold;
+}
+
+select{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    cursor:pointer;
+}
+
 button{
     width:100%;
-    margin-top:20px;
-    font-weight:bold;
+    margin-top:25px;
+    padding:15px;
+    border:none;
+    border-radius:30px;
+    background:#00c6ff;
+    color:white;
     font-size:18px;
-    padding:10px;
-    border: 12%;
-    background: url(oip1.jpg) no-repeat center center fixed;
+    cursor:pointer;
+    transition:.3s;
 }
-    </style>
+
+button:hover{
+    background:#0072ff;
+    transform:scale(1.05);
+}
+
+.footer{
+    margin-top:20px;
+    font-size:14px;
+    color:#ddd;
+}
+</style>
+
 </head>
 <body>
-    <div class="container card-box">
-        <h1>Calculator</h1>
-        <div id="screen" class="screen"></div>
-            <table>
-                <tr>
-                    <td><button onclick="appendToScreen('1')">1</button></td>
-                    <td><button onclick="appendToScreen('2')">2</button></td>
-                    <td><button onclick="appendToScreen('3')">3</button></td>
-                    <td><button onclick="appendToScreen('+')">+</button></td>
-                    <td><button onclick="clearScreen()">AC</button></td>
-                </tr>
 
-                <tr>
-                    <td><button onclick="appendToScreen('4')">4</button></td>
-                    <td><button onclick="appendToScreen('5')">5</button></td>
-                    <td><button onclick="appendToScreen('6')">6</button></td>
-                    <td><button onclick="appendToScreen('-')">-</button></td>
-                    <td><button onclick="appendToScreen('/')">/</button></td>
-                </tr>
+<div class="card">
 
-                <tr>
-                    <td><button onclick="appendToScreen('7')">7</button></td>
-                    <td><button onclick="appendToScreen('8')">8</button></td>
-                    <td><button onclick="appendToScreen('9')">9</button></td>
-                    <td><button onclick="appendToScreen('*')">*</button></td>
-                    <td><button onclick="calculate()">=</button></td>
-                </tr>
+<div class="logo">🧮</div>
 
-                <tr>
-                    <td><button onclick="appendToScreen('0')">0</button></td>
-                    <td><button onclick="appendToScreen('.')">.</button></td>
-                    <td><button onclick="deleteLast()">⌫</button></td>
-                    <td colspan="2"><button onclick="appendToScreen('%')">%</button></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <script>
-        let screen = document.getElementById("screen");
-        function appendToScreen(value)
-        {
-            screen.innerText += value;
-        }
-        function clearScreen()
-        {
-            screen.innerText = "";
-        }
-        function deleteLast()
-        {
-            screen.innerText = screen.innerText.slice(0,-1);
-        }
-        function calculate()
-        {
-            try
-            {
-                let expression = screen.innerText;
-                if(expression=="")
-                {
-                    screen.innerText="";
-                    return;
-                }
-                let result = eval(expression);
-                screen.innerText = result;
-            }
-            catch(error)
-            {
-                screen.innerText="Error";
-            }
-        }
+<h1>Calc215</h1>
 
-    </script>
+<p>Welcome to Smart Calculator</p>
+
+<div id="time"></div>
+<div id="date"></div>
+
+<label>Select Theme</label>
+
+<select id="theme" onchange="changeTheme()">
+<option value="default">Default</option>
+<option value="dark">Dark</option>
+<option value="light">Light</option>
+<option value="blue">Ocean Blue</option>
+<option value="green">Nature Green</option>
+<option value="purple">Royal Purple</option>
+<option value="sunset">Sunset</option>
+<option value="pink">Pink</option>
+<option value="gold">Golden</option>
+<option value="neon">Neon</option>
+<option value="galaxy">Galaxy</option>
+</select>
+
+<button onclick="openCalculator()">
+🚀 Explore Calculator
+</button>
+
+<div class="footer">
+Made with ❤️ by Piyush Sharma
+</div>
+
+</div>
+
+<script>
+
+function updateClock(){
+
+const now=new Date();
+
+document.getElementById("time").innerHTML=
+now.toLocaleTimeString();
+
+document.getElementById("date").innerHTML=
+now.toDateString();
+
+}
+
+setInterval(updateClock,1000);
+updateClock();
+
+function changeTheme(){
+
+let theme=document.getElementById("theme").value;
+
+switch(theme){
+
+case "dark":
+document.body.style.background="linear-gradient(135deg,#000000,#434343)";
+break;
+
+case "light":
+document.body.style.background="linear-gradient(135deg,#ffffff,#dfe9f3)";
+break;
+
+case "blue":
+document.body.style.background="linear-gradient(135deg,#00c6ff,#0072ff)";
+break;
+
+case "green":
+document.body.style.background="linear-gradient(135deg,#11998e,#38ef7d)";
+break;
+
+case "purple":
+document.body.style.background="linear-gradient(135deg,#8e2de2,#4a00e0)";
+break;
+
+case "sunset":
+document.body.style.background="linear-gradient(135deg,#ff512f,#dd2476)";
+break;
+
+case "pink":
+document.body.style.background="linear-gradient(135deg,#ff9a9e,#fad0c4)";
+break;
+
+case "gold":
+document.body.style.background="linear-gradient(135deg,#f7971e,#ffd200)";
+break;
+
+case "neon":
+document.body.style.background="linear-gradient(135deg,#00f260,#0575e6)";
+break;
+
+case "galaxy":
+document.body.style.background="linear-gradient(135deg,#141e30,#243b55)";
+break;
+
+default:
+document.body.style.background="linear-gradient(135deg,#1d2b64,#3a1c71,#6a11cb)";
+}
+
+}
+
+function openCalculator(){
+
+// Change this page name to your calculator page
+window.location.href="cal.html";
+
+}
+
+</script>
+
 </body>
 </html>

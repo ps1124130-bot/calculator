@@ -6,7 +6,7 @@
     <title>Document</title>
     <style>
         body{
-    background:url("oip.jpg") no-repeat center center fixed;
+    background:url("cal.jpg") no-repeat center center fixed;
     background-size:cover;
     font-family:Arial, Helvetica, sans-serif;
 }
@@ -14,7 +14,7 @@
 .card-box{
     width:500px;
     margin:80px auto;
-    background:url(oip1.jpg) no-repeat center center fixed;
+    background:url("oip1.jpg") no-repeat center center fixed;
     padding:35px;
     border-radius:15px;
     box-shadow:0 0 20px rgba(0,0,0,.3);
@@ -73,6 +73,20 @@ button{
 <body>
     <div class="container card-box">
         <h1>Calculator</h1>
+        <label>Select Theme</label>
+        <select id="theme" onchange="changeTheme()">
+            <option value="default">Default</option>
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+            <option value="blue">Ocean Blue</option>
+            <option value="green">Nature Green</option>
+            <option value="purple">Royal Purple</option>
+            <option value="sunset">Sunset</option>
+            <option value="pink">Pink</option>
+            <option value="gold">Golden</option>
+            <option value="neon">Neon</option>
+            <option value="galaxy">Galaxy</option>
+        </select>
         <div id="screen" class="screen"></div>
             <table>
                 <tr>
@@ -109,6 +123,56 @@ button{
         </div>
     </div>
     <script>
+        function changeTheme()
+        {
+            let theme=document.getElementById("theme").value;
+            switch(theme)
+            {
+                case "dark":
+                document.body.style.background="linear-gradient(135deg,#000000,#434343)";
+                break;
+
+                case "light":
+                document.body.style.background="linear-gradient(135deg,#ffffff,#dfe9f3)";
+                break;
+
+                case "blue":
+                document.body.style.background="linear-gradient(135deg,#00c6ff,#0072ff)";
+                break;
+
+                case "green":
+                document.body.style.background="linear-gradient(135deg,#11998e,#38ef7d)";
+                break;
+
+                case "purple":
+                document.body.style.background="linear-gradient(135deg,#8e2de2,#4a00e0)";
+                break;
+
+                case "sunset":
+                document.body.style.background="linear-gradient(135deg,#ff512f,#dd2476)";
+                break;
+
+                case "pink":
+                document.body.style.background="linear-gradient(135deg,#ff9a9e,#fad0c4)";
+                break;
+
+                case "gold":
+                document.body.style.background="linear-gradient(135deg,#f7971e,#ffd200)";
+                break;
+
+                case "neon":
+                document.body.style.background="linear-gradient(135deg,#00f260,#0575e6)";
+                break;
+
+                case "galaxy":
+                document.body.style.background="linear-gradient(135deg,#141e30,#243b55)";
+                break;
+
+                default:
+                document.body.style.background="linear-gradient(135deg,#1d2b64,#3a1c71,#6a11cb)";
+            }
+
+        }
         let screen = document.getElementById("screen");
         function appendToScreen(value)
         {
